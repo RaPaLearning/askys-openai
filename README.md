@@ -1,4 +1,8 @@
-# Sample outputs
+# Generate and Ask
+
+Given a section (shloka) and a bunch of paragraphs (commentary), this program generates:
+1. four questions to help focus on reading the text
+1. an array of embeddings, one per paragraph
 
 ## To start
 
@@ -6,7 +10,9 @@
 
 `set OPENAI_API_KEY=`your_api_key
 
-## Zen guru
+(py files are in trial still, execute them with python) 
+
+## Samples
 
 ```  model="gpt-3.5-turbo",
   messages=[
