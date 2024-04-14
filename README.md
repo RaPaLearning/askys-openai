@@ -12,7 +12,12 @@ Given a section (shloka) and a bunch of paragraphs (commentary), this program ge
 
 (py files are in trial still, execute them with python) 
 
-## Samples
+## Samples 
+
+1. Question generation
+2. Question selection
+
+### Question generation
 
 ```  model="gpt-3.5-turbo",
   messages=[
@@ -155,4 +160,42 @@ by working independent of desire to worship.",
     "Bringing the mind under control can help a person see everything with equanimity."
   ]
 }
+```
+
+### Question selection
+
+Embedding generated for text, and for each question. Four are related to the text.
+Two extra questions introduced - out of context but still within the Gita.
+Question selection by cosine similarity
+
+Summary: Two embeddings tried out: OpenAI and Tensorflow.
+_OpenAI_ knows terms like Arjuna, so the similarities are relatively close for Gita-related questions.
+Even though second question has max similarity, the last question (which has nothing to do with the shloka) is more than half of the max.
+_Tensorflow_ has only the input text, so the similarities are more spread out.
+Still the second question has max similarity. But the last question is less than half of the max.
+
+Outputs:
+
+---
+
+OpenAI embeddings
+
+```
+reading embeddings from: embeddings.json
+cosine similarities for each question:
+[0.31637249090498537, 0.5011826457651322, 0.48703670492238677, 0.45916351248205783, 0.3146004686155212, 0.3638244751317455]
+cosine distances for each question:
+[0.6836275090950146, 0.49881735423486784, 0.5129632950776133, 0.5408364875179421, 0.6853995313844787, 0.6361755248682546]
+```
+
+---
+
+Tensorflow embeddings
+
+```
+reading embeddings from: univsent-embeddings.json
+cosine similarities for each question:
+[0.1360027223472206, 0.3291844833153149, 0.29781508846845445, 0.3141567563526749, 0.1460639798310123, 0.15751665929294556]
+cosine distances for each question:
+[0.8639972776527793, 0.670815516684685, 0.7021849115315455, 0.685843243647325, 0.8539360201689876, 0.8424833407070544]
 ```

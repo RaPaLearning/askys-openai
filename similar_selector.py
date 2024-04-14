@@ -25,8 +25,9 @@ def cosine_distances(text_embedding, question_embeddings):
     print(cos_distances)
 
 
-print('reading embeddings...')
-with open('embeddings.json', 'r') as f:
+embeddings_filename = 'embeddings.json'
+print(f'reading embeddings from: {embeddings_filename}')
+with open(embeddings_filename, 'r') as f:
     embeddings = json.load(f)
     cosine_similarities(embeddings['text_embedding'], embeddings['question_embeddings'])
     cosine_distances(embeddings['text_embedding'], embeddings['question_embeddings'])
